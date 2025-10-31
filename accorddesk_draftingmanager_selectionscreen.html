@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>accordDesk Template Library - Minimalist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #fafafa;
+            color: #1a1a1a;
+        }
+
+        .sidebar {
+            width: 300px;
+            background-color: #ffffff;
+            padding: 60px 40px;
+            border-right: 1px solid #e5e5e5;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar h1 {
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+            margin-bottom: 80px;
+            color: #1a1a1a;
+        }
+
+        .empty-template {
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 2px;
+            padding: 50px 30px;
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+
+        .empty-template:hover {
+            border-color: #2d5016;
+        }
+
+        .empty-template h3 {
+            font-size: 13px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            color: #666;
+            letter-spacing: 0.3px;
+        }
+
+        .plus-button {
+            width: 60px;
+            height: 60px;
+            background: #ffffff;
+            border: 1px solid #1a1a1a;
+            border-radius: 2px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 200;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #1a1a1a;
+        }
+
+        .plus-button:hover {
+            background-color: #2d5016;
+            border-color: #2d5016;
+            color: #ffffff;
+        }
+
+        .main-content {
+            flex: 1;
+            background-color: #fafafa;
+            padding: 60px 70px;
+            overflow-y: auto;
+        }
+
+        .header {
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .header p {
+            font-size: 14px;
+            color: #666;
+            font-weight: 300;
+        }
+
+        .header p strong {
+            font-weight: 400;
+            color: #1a1a1a;
+        }
+
+        .author-section {
+            margin-bottom: 70px;
+        }
+
+        .author-name {
+            font-size: 12px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .template-card {
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 2px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .template-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #2d5016;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .template-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .template-card:hover {
+            border-color: #2d5016;
+            box-shadow: 0 4px 20px rgba(45, 80, 22, 0.08);
+        }
+
+        .card-body {
+            padding: 30px 25px;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            letter-spacing: -0.2px;
+        }
+
+        .card-type {
+            font-size: 11px;
+            font-weight: 400;
+            line-height: 2;
+            margin-bottom: 25px;
+            color: #666;
+            letter-spacing: 0.5px;
+        }
+
+        .card-meta {
+            font-size: 11px;
+            line-height: 1.8;
+            color: #999;
+            font-weight: 300;
+        }
+
+        .card-meta strong {
+            color: #666;
+            font-weight: 400;
+        }
+
+        .divider {
+            width: 20px;
+            height: 1px;
+            background-color: #e5e5e5;
+            margin: 15px 0;
+        }
+
+        /* Subtle scrollbar styling */
+        .main-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .main-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .main-content::-webkit-scrollbar-thumb {
+            background: #d0d0d0;
+            border-radius: 3px;
+        }
+
+        .main-content::-webkit-scrollbar-thumb:hover {
+            background: #2d5016;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>Drafting<br>Manager</h1>
+        
+        <div class="empty-template">
+            <h3>Empty nda Template</h3>
+            <div class="plus-button">+</div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>accordDesk Template Library</h1>
+            <p><strong>Author:</strong> accordDesk GmbH</p>
+        </div>
+
+        <div class="template-grid">
+            <div class="template-card">
+                <div class="card-body">
+                    <div class="card-title">Template</div>
+                    <div class="card-type">
+                        SALES<br>
+                        ENGLISH<br>
+                        LONG
+                    </div>
+                    <div class="divider"></div>
+                    <div class="card-meta">
+                        <strong>Author:</strong> accordDesk GmbH<br>
+                        <strong>Date:</strong> 09/2020
+                    </div>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="card-body">
+                    <div class="card-title">Template</div>
+                    <div class="card-type">
+                        SALES<br>
+                        ENGLISH<br>
+                        SHORT
+                    </div>
+                    <div class="divider"></div>
+                    <div class="card-meta">
+                        <strong>Author:</strong> accordDesk GmbH<br>
+                        <strong>Date:</strong> 09/2020
+                    </div>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="card-body">
+                    <div class="card-title">Template</div>
+                    <div class="card-type">
+                        SALES<br>
+                        ENGLISH<br>
+                        LONG
+                    </div>
+                    <div class="divider"></div>
+                    <div class="card-meta">
+                        <strong>Author:</strong> accordDesk GmbH<br>
+                        <strong>Date:</strong> 07/2019
+                    </div>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="card-body">
+                    <div class="card-title">Template</div>
+                    <div class="card-type">
+                        R&D<br>
+                        GERMAN<br>
+                        LONG
+                    </div>
+                    <div class="divider"></div>
+                    <div class="card-meta">
+                        <strong>Author:</strong> accordDesk GmbH<br>
+                        <strong>Date:</strong> 07/2019
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="author-section">
+            <div class="author-name">Author: Peter Kurz</div>
+            <div class="template-grid">
+                <div class="template-card">
+                    <div class="card-body">
+                        <div class="card-title">Template Peter Kurz</div>
+                        <div class="card-type">
+                            R&D<br>
+                            GERMAN<br>
+                            SHORT
+                        </div>
+                        <div class="divider"></div>
+                        <div class="card-meta">
+                            <strong>Author:</strong> Peter Kurz<br>
+                            <strong>Date:</strong> 03/2017
+                        </div>
+                    </div>
+                </div>
+
+                <div class="template-card">
+                    <div class="card-body">
+                        <div class="card-title">Template Peter Kurz</div>
+                        <div class="card-type">
+                            R&D<br>
+                            GERMAN<br>
+                            SHORT
+                        </div>
+                        <div class="divider"></div>
+                        <div class="card-meta">
+                            <strong>Author:</strong> Paul Gralla<br>
+                            <strong>Date:</strong> 02/2020
+                        </div>
+                    </div>
+                </div>
+
+                <div class="template-card">
+                    <div class="card-body">
+                        <div class="card-title">Template Peter Kurz</div>
+                        <div class="card-type">
+                            R&D<br>
+                            GERMAN<br>
+                            SHORT
+                        </div>
+                        <div class="divider"></div>
+                        <div class="card-meta">
+                            <strong>Author:</strong> Paul Gralla<br>
+                            <strong>Date:</strong> 02/2020
+                        </div>
+                    </div>
+                </div>
+
+                <div class="template-card">
+                    <div class="card-body">
+                        <div class="card-title">Template Peter Kurz</div>
+                        <div class="card-type">
+                            R&D<br>
+                            GERMAN<br>
+                            SHORT
+                        </div>
+                        <div class="divider"></div>
+                        <div class="card-meta">
+                            <strong>Author:</strong> Paul Gralla<br>
+                            <strong>Date:</strong> 02/2020
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
