@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contract Management Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr 1.2fr;
+            grid-template-rows: auto 1fr;
+            height: 100vh;
+            gap: 0;
+        }
+
+        /* Header spanning across all columns */
+        header {
+            grid-column: 1 / -1;
+            background-color: #d4d649;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            grid-template-rows: auto auto;
+        }
+
+        .header-left {
+            grid-column: 1;
+            grid-row: 1 / 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 20px 30px;
+            gap: 15px;
+        }
+
+        .header-section {
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        .header-section:first-child {
+            background-color: #c5d94f;
+        }
+
+        .header-section:last-child {
+            background-color: #e8d94f;
+        }
+
+        .header-section h2 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+        }
+
+        .header-section p {
+            font-size: 18px;
+            color: #333;
+            margin: 0;
+        }
+
+        .header-buttons {
+            grid-column: 2;
+            grid-row: 1 / 3;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding: 20px 30px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .btn-draft {
+            background-color: #5a8fa3;
+            color: white;
+        }
+
+        .btn-template {
+            background-color: #ff1493;
+            color: white;
+        }
+
+        /* Main content area */
+        main {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 180px 1fr 1fr;
+            gap: 0;
+        }
+
+        /* Sidebar - Table of Contents */
+        .sidebar {
+            background-color: #5a8fa3;
+            padding: 30px 0;
+            grid-column: 1;
+        }
+
+        .sidebar-title {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 0 15px;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        /* Contract text section */
+        .contract-section {
+            background-color: #d4f1f9;
+            padding: 30px;
+            grid-column: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .search-box {
+            background-color: #6ba3c5;
+            padding: 15px 20px;
+            border-radius: 6px;
+            color: white;
+            font-size: 16px;
+            border: none;
+        }
+
+        .search-box::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contract-section h3 {
+            color: #2c5566;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .contract-section ul {
+            display: none;
+        }
+
+        .contract-section li {
+            display: none;
+        }
+
+        /* Clause related section */
+        .clause-section {
+            background-color: #c8e8e0;
+            padding: 30px;
+            grid-column: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .clause-section h3 {
+            color: #2c5566;
+            font-size: 18px;
+        }
+
+        .clause-section ul {
+            display: none;
+        }
+
+        .clause-section li {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-left">
+                <div class="header-section">
+                    <h2>Contract related information</h2>
+                </div>
+                <div class="header-section">
+                    <h2>Party-related information</h2>
+                </div>
+            </div>
+            <div class="header-buttons">
+                <button class="btn-draft">Save Draft</button>
+                <button class="btn-template">Save as Template</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-title">Table of Contents</div>
+            </aside>
+
+            <!-- Contract text Section -->
+            <section class="contract-section">
+                <input type="text" class="search-box" placeholder="Search">
+                <h3>Contract text</h3>
+                <ul>
+                    <li>Recitals</li>
+                    <li>Preamble</li>
+                    <li>Definitions</li>
+                    <li>Main</li>
+                    <li>Annexe</li>
+                </ul>
+            </section>
+
+            <!-- Clause Related Section -->
+            <section class="clause-section">
+                <h3>Clause related information</h3>
+                <ul>
+                    <li>General</li>
+                    <li>Category</li>
+                    <li>Alternative representations</li>
+                    <li>Negotiation Guidelines</li>
+                    <li>Review Board</li>
+                    <li>Clause History</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
