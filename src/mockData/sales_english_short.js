@@ -48,6 +48,8 @@ const contractData = {
     }
   ],
 
+  
+
   // Agreement Terms
   terms: {
     term_index: 1,
@@ -1238,6 +1240,4 @@ const contractData = {
 };
 
 // Export for use in module systems
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = contractData;
-}
+export default contractData;

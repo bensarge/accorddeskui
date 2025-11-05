@@ -1,6 +1,7 @@
 <script>
   import { Router, Route } from 'svelte-routing';
   import DraftingManagerView from './views/DraftingManagerView.svelte';
+  import ContractViewerView from './views/ContractViewerView.svelte';
   import AddTemplateButtonShowcase from './components/AddTemplateButtonShowcase.svelte';
 
   // Logo Showcase Components
@@ -15,9 +16,11 @@
   // Icon Showcase Components
   import DraftingManagerIconShowcase from './components/DraftingManagerIconShowcase.svelte';
 
-  // Placeholder for future views
-  // import ContractView from './views/ContractView.svelte';
-  // import NegotiationView from './views/NegotiationView.svelte';
+  // Contract Header Showcase Components
+  import ContractHeaderShowcaseIndex from './components/ContractHeaderShowcaseIndex.svelte';
+  import ContractHeaderShowcase_Condensed from './components/ContractHeaderShowcase_Condensed.svelte';
+  import ContractHeaderShowcase_CardVariations from './components/ContractHeaderShowcase_CardVariations.svelte';
+  import CollapsibleHeaderShowcase from './components/CollapsibleHeaderShowcase.svelte';
 </script>
 
 <Router>
@@ -51,6 +54,25 @@
   <!-- Icon Showcase Routes -->
   <Route path="/showcase/drafting-manager-icons">
     <DraftingManagerIconShowcase />
+  </Route>
+
+  <!-- Contract Header Showcase Routes -->
+  <Route path="/showcase/contract-header">
+    <ContractHeaderShowcaseIndex />
+  </Route>
+  <Route path="/showcase/contract-header/condensed">
+    <ContractHeaderShowcase_Condensed />
+  </Route>
+  <Route path="/showcase/contract-header/card-variations">
+    <ContractHeaderShowcase_CardVariations />
+  </Route>
+  <Route path="/showcase/collapsible-header">
+    <CollapsibleHeaderShowcase />
+  </Route>
+
+  <!-- Contract Viewer Route -->
+  <Route path="/contract/:contractId">
+    <ContractViewerView />
   </Route>
 
   <Route path="/">

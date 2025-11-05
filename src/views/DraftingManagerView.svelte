@@ -1,4 +1,5 @@
 <script>
+  import { navigate } from 'svelte-routing';
   import Sidebar from '../components/Sidebar.svelte';
   import TemplateCard from '../components/TemplateCard.svelte';
   import { templates, authorTemplates } from '../mockData/templates.js';
@@ -10,7 +11,11 @@
 
   function handleTemplateClick(template) {
     console.log('Template clicked:', template);
-    // Future implementation
+
+    // Navigate to contract viewer for "sales english short" template
+    if (template.id === 2) { // ID 2 is "SALES ENGLISH SHORT"
+      navigate('/contract/sales_english_short');
+    }
   }
 </script>
 
