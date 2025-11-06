@@ -1,4 +1,6 @@
-const contractData = {
+import type { ContractData } from '../types';
+
+const contractData: ContractData = {
   // Contract Metadata
   metadata: {
     con_index: 6,

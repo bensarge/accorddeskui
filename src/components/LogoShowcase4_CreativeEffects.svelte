@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   // Showcase 4: Creative Effects & Styling
   // Demonstrates logo with various visual effects, filters, and creative presentations
 </script>

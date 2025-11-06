@@ -1,6 +1,8 @@
-<script>
-  export let template;
-  export let onClick = () => {};
+<script lang="ts">
+  import type { Template, ClickHandler } from '../types';
+
+  export let template: Template;
+  export let onClick: ClickHandler = () => {};
 </script>
 
 <div class="template-card" on:click={onClick} on:keydown={(e) => e.key === 'Enter' && onClick()} role="button" tabindex="0">

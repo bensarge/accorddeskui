@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { Router, Route } from 'svelte-routing';
   import DraftingManagerView from './views/DraftingManagerView.svelte';
   import ContractViewerView from './views/ContractViewerView.svelte';

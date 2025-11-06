@@ -1,5 +1,7 @@
+import type { Template, AuthorTemplates } from '../types';
+
 // Mock data for template library
-export const templates = [
+export const templates: Template[] = [
   {
     id: 1,
     title: "Template",
@@ -30,7 +32,7 @@ export const templates = [
   }
 ];
 
-export const authorTemplates = {
+export const authorTemplates: AuthorTemplates = {
   authorName: "Peter Kurz",
   templates: [
     {

@@ -1,15 +1,16 @@
-<script>
+<script lang="ts">
   import { navigate } from 'svelte-routing';
   import Sidebar from '../components/Sidebar.svelte';
   import TemplateCard from '../components/TemplateCard.svelte';
-  import { templates, authorTemplates } from '../mockData/templates.js';
+  import { templates, authorTemplates } from '../mockData/templates';
+  import type { Template } from '../types';
 
-  function handleCreateEmpty() {
+  function handleCreateEmpty(): void {
     console.log('Create empty template clicked');
     // Future implementation
   }
 
-  function handleTemplateClick(template) {
+  function handleTemplateClick(template: Template): void {
     console.log('Template clicked:', template);
 
     // Navigate to contract viewer for "sales english short" template

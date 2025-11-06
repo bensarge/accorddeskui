@@ -1,9 +1,9 @@
-<script>
+<script lang="ts">
   // Drafting Manager Icon Showcase
   // Displays 15+ icon variations for the Drafting Manager sidebar entry
   // Icons from lucide-svelte, svelte-remixicon, and phosphor-svelte
 
-  import { FileEdit, FileText, PenTool, Pencil, BookOpen, Layers, LayoutList, Zap, Briefcase, Archive, Clipboard, Edit3, FileCode, Lightbulb, Scroll } from 'lucide-svelte';
+  import { FileEdit, FileText, PenTool, Pencil, BookOpen, Layers } from 'lucide-svelte';
   import RiFileEditLine from 'svelte-remixicon/RiFileEditLine.svelte';
   import RiFileTextLine from 'svelte-remixicon/RiFileTextLine.svelte';
   import RiPencilLine from 'svelte-remixicon/RiPencilLine.svelte';

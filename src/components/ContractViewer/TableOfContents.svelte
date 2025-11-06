@@ -1,26 +1,27 @@
-<script>
+<script lang="ts">
   import { navigate } from 'svelte-routing';
   import { FileText, ChevronLeft } from 'lucide-svelte';
+  import type { ContractData } from '../../types';
 
-  export let contractData;
-  export let selectedClauseId = null;
-  export let onSelect = () => {};
+  export let contractData: ContractData;
+  export let selectedClauseId: string | null = null;
+  export let onSelect: (clauseId: string) => void = () => {};
 
-  let expandedSections = {
+  let expandedSections: Record<string, boolean> = {
     preamble: true,
     definitions: true,
     main: true
   };
 
-  function toggleSection(section) {
+  function toggleSection(section: string): void {
     expandedSections[section] = !expandedSections[section];
   }
 
-  function selectItem(id, type) {
+  function selectItem(id: number, type: string): void {
     onSelect(`${type}-${id}`);
   }
 
-  export function updateSelection(clauseId) {
+  export function updateSelection(clauseId: string): void {
     selectedClauseId = clauseId;
     // Scroll to the selected item in TOC if needed
     const element = document.querySelector(`[data-toc-id="${clauseId}"]`);
@@ -29,11 +30,11 @@
     }
   }
 
-  function isSelected(id, type) {
+  function isSelected(id: number, type: string): boolean {
     return selectedClauseId === `${type}-${id}`;
   }
 
-  function handleNavigateToDrafting() {
+  function handleNavigateToDrafting(): void {
     navigate('/');
   }
 </script>
@@ -57,9 +58,9 @@
         on:click={() => toggleSection('preamble')}
       >
         <span class="section-title">A. Preamble</span>
-        <span class="toggle-icon">{expandedSections.preamble ? '−' : '+'}</span>
+        <span class="toggle-icon">{expandedSections['preamble'] ? '−' : '+'}</span>
       </button>
-      {#if expandedSections.preamble}
+      {#if expandedSections['preamble']}
         <div class="section-items">
           {#each contractData.preamble as item (item.preamble_index)}
             <button
@@ -83,9 +84,9 @@
         on:click={() => toggleSection('definitions')}
       >
         <span class="section-title">B. Definitions and Interpretations</span>
-        <span class="toggle-icon">{expandedSections.definitions ? '−' : '+'}</span>
+        <span class="toggle-icon">{expandedSections['definitions'] ? '−' : '+'}</span>
       </button>
-      {#if expandedSections.definitions}
+      {#if expandedSections['definitions']}
         <div class="section-items">
           {#each contractData.definitions as item (item.def_index)}
             <button
@@ -109,9 +110,9 @@
         on:click={() => toggleSection('main')}
       >
         <span class="section-title">C. Main Clauses</span>
-        <span class="toggle-icon">{expandedSections.main ? '−' : '+'}</span>
+        <span class="toggle-icon">{expandedSections['main'] ? '−' : '+'}</span>
       </button>
-      {#if expandedSections.main}
+      {#if expandedSections['main']}
         <div class="section-items">
           {#each contractData.clauses as item (item.cla_index)}
             <button

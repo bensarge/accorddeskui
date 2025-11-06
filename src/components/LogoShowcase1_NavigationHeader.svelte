@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   // Showcase 1: Navigation Header Variations
   // Demonstrates logo in different navigation bar contexts
 </script>

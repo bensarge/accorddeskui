@@ -1,9 +1,8 @@
-<script>
-  import { FileEdit, PenTool } from 'lucide-svelte';
-    import RiFileEditLine from 'svelte-remixicon/RiFileEditLine.svelte';
-    import { PencilSimple, FileText as PhosphorFileText, NotePencil, BookOpen as PhosphorBookOpen, Stack, Briefcase as PhosphorBriefcase } from 'phosphor-svelte';
+<script lang="ts">
+  import { Stack } from 'phosphor-svelte';
+  import type { ClickHandler } from '../types';
 
-  export let onCreateEmpty = () => {};
+  export let onCreateEmpty: ClickHandler = () => {};
 </script>
 
 <div class="sidebar">

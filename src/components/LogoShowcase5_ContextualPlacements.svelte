@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   // Showcase 5: Contextual Placements
   // Demonstrates logo in real-world UI contexts and specific use cases
 </script>

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   // Self-contained showcase component for Add Template button variations
 </script>
 

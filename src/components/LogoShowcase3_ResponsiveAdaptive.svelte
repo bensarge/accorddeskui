@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   // Showcase 3: Responsive & Adaptive Variations
   // Demonstrates logo scaling and adaptation across different screen sizes and contexts
 </script>

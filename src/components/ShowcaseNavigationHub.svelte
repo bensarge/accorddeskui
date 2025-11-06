@@ -1,7 +1,26 @@
-<script>
+<script lang="ts">
   import { Link } from 'svelte-routing';
-  
-  const showcaseCategories = [
+
+  interface ShowcaseItem {
+    title: string;
+    path: string;
+    description: string;
+  }
+
+  interface ShowcaseCategory {
+    id: number;
+    title: string;
+    path: string | null;
+    description: string;
+    totalVariations: number | null;
+    subcategories: number;
+    icon: string;
+    color: string;
+    highlights: string[];
+    items?: ShowcaseItem[];
+  }
+
+  const showcaseCategories: ShowcaseCategory[] = [
     {
       id: 1,
       title: 'Logo Presentations',
@@ -139,11 +158,11 @@
             <div class="card-content">
               <div class="card-header">
                 <h2>{category.title}</h2>
-                <div class="card-badge">{category.items.length} showcases</div>
+                <div class="card-badge">{category.items?.length || 0} showcases</div>
               </div>
               <p class="card-description">{category.description}</p>
               <div class="items-list">
-                {#each category.items as item}
+                {#each category.items || [] as item}
                   <Link to={item.path} class="item-link">
                     <div class="item-title">{item.title}</div>
                     <div class="item-description">{item.description}</div>

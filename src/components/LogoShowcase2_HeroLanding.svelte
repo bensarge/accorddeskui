@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   // Showcase 2: Hero & Landing Page Variations
   // Demonstrates logo as hero element in different landing page contexts
 </script>

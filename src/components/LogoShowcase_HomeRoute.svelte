@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   // Showcase: Home Route Logo Placements
   // Demonstrates different logo placement options for the DraftingManagerView layout
   

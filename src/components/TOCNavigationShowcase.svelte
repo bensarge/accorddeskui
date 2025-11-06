@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
   import { navigate } from 'svelte-routing';
   import { ArrowLeft, ChevronLeft, X, Home, FileText } from 'lucide-svelte';
 
-  function handleNavigateToDrafting() {
+  function handleNavigateToDrafting(): void {
     navigate('/');
   }
 </script>

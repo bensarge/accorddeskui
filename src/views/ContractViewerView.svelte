@@ -1,15 +1,14 @@
-<script>
+<script lang="ts">
   import TableOfContents from '../components/ContractViewer/TableOfContents.svelte';
   import ContractWording from '../components/ContractViewer/ContractWording.svelte';
-  import contractData from '../mockData/sales_english_short.js';
+  import contractData from '../mockData/sales_english_short';
   import { Minimize2, Maximize2 } from 'lucide-svelte';
 
-  let selectedClauseId = null;
-  let contractWordingElement;
-  let tocElement;
-  let headerCollapsed = true;
+  let selectedClauseId: string | null = null;
+  let contractWordingElement: HTMLElement | undefined;
+  let headerCollapsed: boolean = true;
 
-  function handleTOCSelect(clauseId) {
+  function handleTOCSelect(clauseId: string): void {
     selectedClauseId = clauseId;
     // Scroll contract wording to the selected clause
     if (contractWordingElement) {
@@ -17,9 +16,11 @@
       if (element) {
         // Use requestAnimationFrame to ensure DOM is fully rendered before scrolling
         requestAnimationFrame(() => {
+          if (!contractWordingElement) return;
+
           // Get the sticky header element and its height
           const stickyHeader = contractWordingElement.querySelector('.clause-headers');
-          const headerHeight = stickyHeader ? stickyHeader.offsetHeight : 0;
+          const headerHeight = stickyHeader instanceof HTMLElement ? stickyHeader.offsetHeight : 0;
 
           // Calculate the element's position relative to the scroll container
           const elementRect = element.getBoundingClientRect();
@@ -30,7 +31,7 @@
           const targetScrollTop = contractWordingElement.scrollTop +
                                   elementRect.top -
                                   containerRect.top -
-                                  headerHeight; 
+                                  headerHeight;
 
           // Perform smooth scroll
           contractWordingElement.scrollTo({
@@ -42,7 +43,7 @@
     }
   }
 
-  function handleClauseSelect(clauseId) {
+  function handleClauseSelect(clauseId: string): void {
     selectedClauseId = clauseId;
     // Note: TOC selection is now only updated by direct user clicks on TOC items
     // Scrolling through clause rows no longer updates the TOC selection
@@ -52,9 +53,8 @@
 <div class="contract-viewer">
   <!-- Left Sidebar: Table of Contents -->
   <div class="toc-sidebar">
-    <TableOfContents 
-      bind:this={tocElement}
-      {contractData} 
+    <TableOfContents
+      {contractData}
       {selectedClauseId}
       onSelect={handleTOCSelect}
     />
@@ -84,7 +84,7 @@
         <div class="header-summary">
           <span class="summary-item">{contractData.metadata.type} v{contractData.metadata.version}</span>
           <span class="summary-divider">•</span>
-          <span class="summary-item">{contractData.parties[0].party_name} ⟷ {contractData.parties[1].party_name}</span>
+          <span class="summary-item">{contractData.parties[0]?.party_name} ⟷ {contractData.parties[1]?.party_name}</span>
           <span class="summary-divider">•</span>
           <span class="summary-item">{contractData.terms.effective_date} to {contractData.terms.expiration_date}</span>
         </div>
@@ -104,15 +104,15 @@
           <div class="card-title">Parties</div>
           <div class="card-content">
             <div class="party-block">
-              <div class="party-name">{contractData.parties[0].party_name}</div>
-              <div class="party-detail">{contractData.parties[0].party_registered_office}</div>
-              <div class="party-rep">Rep: {contractData.parties[0].party_represented_by}</div>
+              <div class="party-name">{contractData.parties[0]?.party_name}</div>
+              <div class="party-detail">{contractData.parties[0]?.party_registered_office}</div>
+              <div class="party-rep">Rep: {contractData.parties[0]?.party_represented_by}</div>
             </div>
             <div class="party-divider"></div>
             <div class="party-block">
-              <div class="party-name">{contractData.parties[1].party_name}</div>
-              <div class="party-detail">{contractData.parties[1].party_registered_office}</div>
-              <div class="party-rep">Rep: {contractData.parties[1].party_represented_by}</div>
+              <div class="party-name">{contractData.parties[1]?.party_name}</div>
+              <div class="party-detail">{contractData.parties[1]?.party_registered_office}</div>
+              <div class="party-rep">Rep: {contractData.parties[1]?.party_represented_by}</div>
             </div>
           </div>
         </div>

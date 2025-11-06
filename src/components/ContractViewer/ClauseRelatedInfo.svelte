@@ -1,14 +1,25 @@
-<script>
-  export let contractData;
+<script lang="ts">
+  import type { ContractData } from '../../types';
+
+  export let contractData: ContractData;
+
+  interface CombinedItem {
+    type: 'preamble' | 'definition' | 'clause';
+    point: string;
+    negotiable: boolean;
+    accountable: string;
+    approval: boolean;
+    negotiation: string;
+  }
 
   // Combine all items (preamble, definitions, clauses) into a single array
   // to align with the contract wording section
-  let allItems = [];
+  let allItems: CombinedItem[] = [];
 
   $: {
     allItems = [
       ...contractData.preamble.map(item => ({
-        type: 'preamble',
+        type: 'preamble' as const,
         point: item.preamble_point,
         negotiable: item.preamble_negotiable,
         accountable: item.preamble_accountable,
@@ -16,7 +27,7 @@
         negotiation: item.preamble_status
       })),
       ...contractData.definitions.map(item => ({
-        type: 'definition',
+        type: 'definition' as const,
         point: item.def_point,
         negotiable: item.def_negotiable,
         accountable: item.def_accountable,
@@ -24,7 +35,7 @@
         negotiation: item.def_status
       })),
       ...contractData.clauses.map(item => ({
-        type: 'clause',
+        type: 'clause' as const,
         point: item.cla_point,
         negotiable: item.cla_negotiable,
         accountable: item.cla_accountable,

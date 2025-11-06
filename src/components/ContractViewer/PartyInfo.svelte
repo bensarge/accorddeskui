@@ -1,7 +1,9 @@
-<script>
-  export let parties;
-  export let terms;
-  export let metadata;
+<script lang="ts">
+  import type { Party, Terms, ContractMetadata } from '../../types';
+
+  export let parties: Party[];
+  export let terms: Terms;
+  export let metadata: ContractMetadata;
 </script>
 
 <div class="party-info-container">

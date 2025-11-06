@@ -1,5 +1,7 @@
-<script>
-  export let metadata;
+<script lang="ts">
+  import type { ContractMetadata } from '../../types';
+
+  export let metadata: ContractMetadata;
 </script>
 
 <div class="metadata-container">

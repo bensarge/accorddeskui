@@ -1,22 +1,22 @@
 <svelte:head>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 </svelte:head>
 
-<script>
+<script lang="ts">
   import { onMount } from 'svelte';
+  import type { ContractData } from '../../types';
 
-  export let contractData;
-  export let selectedClauseId = null;
-  export let onSelect = () => {};
+  export let contractData: ContractData;
+  export let selectedClauseId: string | null = null;
+  export let onSelect: (clauseId: string) => void = () => {};
 
-  let textMode = 'wrapped'; // 'wrapped' or 'truncated'
+  let textMode: 'wrapped' | 'truncated' = 'wrapped';
 
   // Variables to track resizing
-  let resizing = null;
-  let startX = 0;
-  let containerWidth = 0;
+  let resizing: string | null = null;
+  let startX: number = 0;
 
   onMount(() => {
     const root = document.documentElement;
@@ -83,7 +83,7 @@
     };
   });
 
-  function updateSeparatorPositions() {
+  function updateSeparatorPositions(): void {
     const root = document.documentElement;
     const headerSection = document.querySelector('.clause-headers');
 
@@ -93,9 +93,6 @@
     const containerRect = headerSection.getBoundingClientRect();
     const containerLeft = containerRect.left;
     const containerTop = containerRect.top;
-
-    // Use the actual content width of the header (which is the grid width)
-    containerWidth = containerRect.width;
 
     // Parse current clause width
     const styles = getComputedStyle(root);
@@ -109,7 +106,7 @@
     root.style.setProperty('--sep-top', containerTop + 'px');
   }
 
-  function renderSeparators() {
+  function renderSeparators(): void {
     const container = document.getElementById('separatorsContainer');
     if (!container) return;
 
@@ -118,17 +115,19 @@
     `;
   }
 
-  function setupResizing() {
+  function setupResizing(): void {
     const separators = document.querySelectorAll('.separator');
     const root = document.documentElement;
 
     separators.forEach(sep => {
-      sep.addEventListener('mousedown', (e) => {
-        if (e.button !== 0) return;
-        e.preventDefault();
+      sep.addEventListener('mousedown', (e: Event) => {
+        const mouseEvent = e as MouseEvent;
+        if (mouseEvent.button !== 0) return;
+        mouseEvent.preventDefault();
 
-        resizing = sep.dataset.separator;
-        startX = e.clientX;
+        const htmlElement = sep as HTMLElement;
+        resizing = htmlElement.dataset['separator'] || null;
+        startX = mouseEvent.clientX;
 
         const styles = getComputedStyle(root);
         const clauseWidth = parseFloat(styles.getPropertyValue('--clause-width').trim());
@@ -144,7 +143,7 @@
         // Set the top position for separators
         root.style.setProperty('--sep-top', containerTop + 'px');
 
-        const onMouseMove = (moveEvent) => {
+        const onMouseMove = (moveEvent: MouseEvent): void => {
           const delta = moveEvent.clientX - startX;
 
           if (resizing === '1') {
@@ -179,7 +178,7 @@
           }
         };
 
-        const onMouseUp = () => {
+        const onMouseUp = (): void => {
           resizing = null;
           document.removeEventListener('mousemove', onMouseMove);
           document.removeEventListener('mouseup', onMouseUp);
@@ -191,16 +190,23 @@
     });
   }
 
-  function handleClauseClick(id, type) {
+  function handleClauseClick(id: number, type: string): void {
     const clauseId = `${type}-${id}`;
     onSelect(clauseId);
   }
 
-  function isSelected(id, type) {
+  function isSelected(id: number, type: string): boolean {
     return selectedClauseId === `${type}-${id}`;
   }
 
-  function getClauseInfo(item, type) {
+  interface ClauseInfo {
+    negotiation: string;
+    accountable: string;
+    approval: boolean;
+    negotiable: boolean;
+  }
+
+  function getClauseInfo(item: any, type: string): ClauseInfo {
     if (type === 'preamble') {
       return {
         negotiation: item.preamble_status || '—',

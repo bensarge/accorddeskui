@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { Link } from 'svelte-routing';
   import { ChevronUp, ChevronDown, Minimize2, Maximize2, ChevronsUp, ChevronsDown } from 'lucide-svelte';
 
@@ -88,13 +88,13 @@
                 <div class="card-title">Parties</div>
                 <div class="card-content">
                   <div class="party-block">
-                    <div class="party-name">{mockData.parties[0].party_name}</div>
-                    <div class="party-detail">{mockData.parties[0].party_registered_office}</div>
+                    <div class="party-name">{mockData.parties[0]?.party_name}</div>
+                    <div class="party-detail">{mockData.parties[0]?.party_registered_office}</div>
                   </div>
                   <div class="party-divider"></div>
                   <div class="party-block">
-                    <div class="party-name">{mockData.parties[1].party_name}</div>
-                    <div class="party-detail">{mockData.parties[1].party_registered_office}</div>
+                    <div class="party-name">{mockData.parties[1]?.party_name}</div>
+                    <div class="party-detail">{mockData.parties[1]?.party_registered_office}</div>
                   </div>
                 </div>
               </div>
@@ -160,13 +160,13 @@
                 <div class="card-title">Parties</div>
                 <div class="card-content">
                   <div class="party-block">
-                    <div class="party-name">{mockData.parties[0].party_name}</div>
-                    <div class="party-detail">{mockData.parties[0].party_registered_office}</div>
+                    <div class="party-name">{mockData.parties[0]?.party_name}</div>
+                    <div class="party-detail">{mockData.parties[0]?.party_registered_office}</div>
                   </div>
                   <div class="party-divider"></div>
                   <div class="party-block">
-                    <div class="party-name">{mockData.parties[1].party_name}</div>
-                    <div class="party-detail">{mockData.parties[1].party_registered_office}</div>
+                    <div class="party-name">{mockData.parties[1]?.party_name}</div>
+                    <div class="party-detail">{mockData.parties[1]?.party_registered_office}</div>
                   </div>
                 </div>
               </div>
@@ -220,7 +220,7 @@
             <div class="v3-summary">
               <span class="v3-summary-item">{mockData.metadata.type} v{mockData.metadata.version}</span>
               <span class="v3-summary-divider">•</span>
-              <span class="v3-summary-item">{mockData.parties[0].party_name} ⟷ {mockData.parties[1].party_name}</span>
+              <span class="v3-summary-item">{mockData.parties[0]?.party_name} ⟷ {mockData.parties[1]?.party_name}</span>
               <span class="v3-summary-divider">•</span>
               <span class="v3-summary-item">{mockData.terms.effective_date} to {mockData.terms.expiration_date}</span>
             </div>
@@ -238,13 +238,13 @@
                   <div class="card-title">Parties</div>
                   <div class="card-content">
                     <div class="party-block">
-                      <div class="party-name">{mockData.parties[0].party_name}</div>
-                      <div class="party-detail">{mockData.parties[0].party_registered_office}</div>
+                      <div class="party-name">{mockData.parties[0]?.party_name}</div>
+                      <div class="party-detail">{mockData.parties[0]?.party_registered_office}</div>
                     </div>
                     <div class="party-divider"></div>
                     <div class="party-block">
-                      <div class="party-name">{mockData.parties[1].party_name}</div>
-                      <div class="party-detail">{mockData.parties[1].party_registered_office}</div>
+                      <div class="party-name">{mockData.parties[1]?.party_name}</div>
+                      <div class="party-detail">{mockData.parties[1]?.party_registered_office}</div>
                     </div>
                   </div>
                 </div>
@@ -303,13 +303,13 @@
                 <div class="card-title">Parties</div>
                 <div class="card-content">
                   <div class="party-block">
-                    <div class="party-name">{mockData.parties[0].party_name}</div>
-                    <div class="party-detail">{mockData.parties[0].party_registered_office}</div>
+                    <div class="party-name">{mockData.parties[0]?.party_name}</div>
+                    <div class="party-detail">{mockData.parties[0]?.party_registered_office}</div>
                   </div>
                   <div class="party-divider"></div>
                   <div class="party-block">
-                    <div class="party-name">{mockData.parties[1].party_name}</div>
-                    <div class="party-detail">{mockData.parties[1].party_registered_office}</div>
+                    <div class="party-name">{mockData.parties[1]?.party_name}</div>
+                    <div class="party-detail">{mockData.parties[1]?.party_registered_office}</div>
                   </div>
                 </div>
               </div>
@@ -373,13 +373,13 @@
                 <div class="card-title">Parties</div>
                 <div class="card-content">
                   <div class="party-block">
-                    <div class="party-name">{mockData.parties[0].party_name}</div>
-                    <div class="party-detail">{mockData.parties[0].party_registered_office}</div>
+                    <div class="party-name">{mockData.parties[0]?.party_name}</div>
+                    <div class="party-detail">{mockData.parties[0]?.party_registered_office}</div>
                   </div>
                   <div class="party-divider"></div>
                   <div class="party-block">
-                    <div class="party-name">{mockData.parties[1].party_name}</div>
-                    <div class="party-detail">{mockData.parties[1].party_registered_office}</div>
+                    <div class="party-name">{mockData.parties[1]?.party_name}</div>
+                    <div class="party-detail">{mockData.parties[1]?.party_registered_office}</div>
                   </div>
                 </div>
               </div>

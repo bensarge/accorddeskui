@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { Link } from 'svelte-routing';
   
   // Mock contract data for showcase (same as condensed showcase)
@@ -78,8 +78,8 @@
             <div class="v1-card">
               <div class="v1-card-title">Parties</div>
               <div class="v1-card-content">
-                <div class="v1-item"><span class="label">Party 1:</span> {mockData.parties[0].party_name}</div>
-                <div class="v1-item"><span class="label">Party 2:</span> {mockData.parties[1].party_name}</div>
+                <div class="v1-item"><span class="label">Party 1:</span> {mockData.parties[0]?.party_name}</div>
+                <div class="v1-item"><span class="label">Party 2:</span> {mockData.parties[1]?.party_name}</div>
               </div>
             </div>
             <div class="v1-card">
@@ -125,8 +125,8 @@
             <div class="v2-card">
               <div class="v2-card-title">Parties</div>
               <div class="v2-card-content">
-                <div class="v2-item"><span class="label">Party 1:</span> {mockData.parties[0].party_name}</div>
-                <div class="v2-item"><span class="label">Party 2:</span> {mockData.parties[1].party_name}</div>
+                <div class="v2-item"><span class="label">Party 1:</span> {mockData.parties[0]?.party_name}</div>
+                <div class="v2-item"><span class="label">Party 2:</span> {mockData.parties[1]?.party_name}</div>
               </div>
             </div>
             <div class="v2-card">
@@ -183,12 +183,12 @@
               <div class="v3-card-title">Parties</div>
               <div class="v3-card-content">
                 <div class="v3-party-block">
-                  <div class="v3-party-name">{mockData.parties[0].party_name}</div>
-                  <div class="v3-party-rep">Rep: {mockData.parties[0].party_represented_by}</div>
+                  <div class="v3-party-name">{mockData.parties[0]?.party_name}</div>
+                  <div class="v3-party-rep">Rep: {mockData.parties[0]?.party_represented_by}</div>
                 </div>
                 <div class="v3-party-block">
-                  <div class="v3-party-name">{mockData.parties[1].party_name}</div>
-                  <div class="v3-party-rep">Rep: {mockData.parties[1].party_represented_by}</div>
+                  <div class="v3-party-name">{mockData.parties[1]?.party_name}</div>
+                  <div class="v3-party-rep">Rep: {mockData.parties[1]?.party_represented_by}</div>
                 </div>
               </div>
             </div>
@@ -255,9 +255,9 @@
             <div class="v4-card">
               <div class="v4-card-title">Party 1</div>
               <div class="v4-card-content">
-                <div class="v4-item"><span class="label">Name:</span> {mockData.parties[0].party_name}</div>
-                <div class="v4-item"><span class="label">Office:</span> {mockData.parties[0].party_registered_office}</div>
-                <div class="v4-item"><span class="label">Rep. by:</span> {mockData.parties[0].party_represented_by}</div>
+                <div class="v4-item"><span class="label">Name:</span> {mockData.parties[0]?.party_name}</div>
+                <div class="v4-item"><span class="label">Office:</span> {mockData.parties[0]?.party_registered_office}</div>
+                <div class="v4-item"><span class="label">Rep. by:</span> {mockData.parties[0]?.party_represented_by}</div>
               </div>
             </div>
           </div>
@@ -265,9 +265,9 @@
             <div class="v4-card">
               <div class="v4-card-title">Party 2</div>
               <div class="v4-card-content">
-                <div class="v4-item"><span class="label">Name:</span> {mockData.parties[1].party_name}</div>
-                <div class="v4-item"><span class="label">Office:</span> {mockData.parties[1].party_registered_office}</div>
-                <div class="v4-item"><span class="label">Rep. by:</span> {mockData.parties[1].party_represented_by}</div>
+                <div class="v4-item"><span class="label">Name:</span> {mockData.parties[1]?.party_name}</div>
+                <div class="v4-item"><span class="label">Office:</span> {mockData.parties[1]?.party_registered_office}</div>
+                <div class="v4-item"><span class="label">Rep. by:</span> {mockData.parties[1]?.party_represented_by}</div>
               </div>
             </div>
             <div class="v4-card">
@@ -325,15 +325,15 @@
               <div class="v5-card-title">Parties</div>
               <div class="v5-card-content">
                 <div class="v5-party-block">
-                  <div class="v5-party-name">{mockData.parties[0].party_name}</div>
-                  <div class="v5-party-detail">{mockData.parties[0].party_registered_office}</div>
-                  <div class="v5-party-rep">Rep: {mockData.parties[0].party_represented_by}</div>
+                  <div class="v5-party-name">{mockData.parties[0]?.party_name}</div>
+                  <div class="v5-party-detail">{mockData.parties[0]?.party_registered_office}</div>
+                  <div class="v5-party-rep">Rep: {mockData.parties[0]?.party_represented_by}</div>
                 </div>
                 <div class="v5-party-divider"></div>
                 <div class="v5-party-block">
-                  <div class="v5-party-name">{mockData.parties[1].party_name}</div>
-                  <div class="v5-party-detail">{mockData.parties[1].party_registered_office}</div>
-                  <div class="v5-party-rep">Rep: {mockData.parties[1].party_represented_by}</div>
+                  <div class="v5-party-name">{mockData.parties[1]?.party_name}</div>
+                  <div class="v5-party-detail">{mockData.parties[1]?.party_registered_office}</div>
+                  <div class="v5-party-rep">Rep: {mockData.parties[1]?.party_represented_by}</div>
                 </div>
               </div>
             </div>
@@ -391,15 +391,15 @@
             <div class="v6-card">
               <div class="v6-card-title">Party 1</div>
               <div class="v6-card-content">
-                <div class="v6-value">{mockData.parties[0].party_name}</div>
-                <div class="v6-subvalue">{mockData.parties[0].party_represented_by}</div>
+                <div class="v6-value">{mockData.parties[0]?.party_name}</div>
+                <div class="v6-subvalue">{mockData.parties[0]?.party_represented_by}</div>
               </div>
             </div>
             <div class="v6-card">
               <div class="v6-card-title">Party 2</div>
               <div class="v6-card-content">
-                <div class="v6-value">{mockData.parties[1].party_name}</div>
-                <div class="v6-subvalue">{mockData.parties[1].party_represented_by}</div>
+                <div class="v6-value">{mockData.parties[1]?.party_name}</div>
+                <div class="v6-subvalue">{mockData.parties[1]?.party_represented_by}</div>
               </div>
             </div>
             <div class="v6-card">
