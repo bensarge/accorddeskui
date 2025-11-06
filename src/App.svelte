@@ -2,6 +2,11 @@
   import { Router, Route } from 'svelte-routing';
   import DraftingManagerView from './views/DraftingManagerView.svelte';
   import ContractViewerView from './views/ContractViewerView.svelte';
+
+  // Showcase Navigation Hub
+  import ShowcaseNavigationHub from './components/ShowcaseNavigationHub.svelte';
+
+  // Individual Showcase Components
   import AddTemplateButtonShowcase from './components/AddTemplateButtonShowcase.svelte';
 
   // Logo Showcase Components
@@ -21,9 +26,18 @@
   import ContractHeaderShowcase_Condensed from './components/ContractHeaderShowcase_Condensed.svelte';
   import ContractHeaderShowcase_CardVariations from './components/ContractHeaderShowcase_CardVariations.svelte';
   import CollapsibleHeaderShowcase from './components/CollapsibleHeaderShowcase.svelte';
+
+  // TOC Navigation Showcase
+  import TOCNavigationShowcase from './components/TOCNavigationShowcase.svelte';
 </script>
 
 <Router>
+  <!-- Main Showcase Navigation Hub -->
+  <Route path="/showcase">
+    <ShowcaseNavigationHub />
+  </Route>
+
+  <!-- Individual Component Showcases -->
   <Route path="/showcase/add-template-buttons">
     <AddTemplateButtonShowcase />
   </Route>
@@ -68,6 +82,11 @@
   </Route>
   <Route path="/showcase/collapsible-header">
     <CollapsibleHeaderShowcase />
+  </Route>
+
+  <!-- TOC Navigation Showcase Route -->
+  <Route path="/showcase/toc-navigation">
+    <TOCNavigationShowcase />
   </Route>
 
   <!-- Contract Viewer Route -->

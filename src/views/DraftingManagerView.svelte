@@ -27,15 +27,17 @@
     <img src="/accorddesk_logo_alpha.png" alt="AccordDesk Logo" class="logo-main-header" />
     <div class="header-text">
       <h1>accordDesk Template Library</h1>
-      <p><strong>Author:</strong> accordDesk GmbH</p>
     </div>
     <!-- <img src="/accorddesk_logo_alpha.png" alt="AccordDesk Logo" class="logo-header-right" /> -->
   </div>
 
-  <div class="template-grid">
-    {#each templates as template (template.id)}
-      <TemplateCard {template} onClick={() => handleTemplateClick(template)} />
-    {/each}
+  <div class="author-section">
+    <div class="author-name">Author: accordDesk GmbH</div>
+    <div class="template-grid">
+      {#each templates as template (template.id)}
+        <TemplateCard {template} onClick={() => handleTemplateClick(template)} />
+      {/each}
+    </div>
   </div>
 
   <div class="author-section">
@@ -102,17 +104,6 @@
     font-weight: 300;
     letter-spacing: -0.5px;
     margin-bottom: 12px;
-    color: #1a1a1a;
-  }
-
-  .header p {
-    font-size: 14px;
-    color: #666;
-    font-weight: 300;
-  }
-
-  .header p :global(strong) {
-    font-weight: 400;
     color: #1a1a1a;
   }
 

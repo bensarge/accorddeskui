@@ -98,8 +98,19 @@
     {/each}
   </div>
 
-  <div class="back-link">
-    <Link to="/">← Back to Home</Link>
+  <div class="quick-links">
+    <h3>Quick Navigation</h3>
+    <div class="links-grid">
+      <Link to="/showcase" class="quick-link">
+        ← All Showcases
+      </Link>
+      <Link to="/" class="quick-link">
+        Main App
+      </Link>
+      <Link to="/showcase/logo" class="quick-link">
+        Logo Showcase
+      </Link>
+    </div>
   </div>
 </div>
 
@@ -309,6 +320,44 @@
 
   .showcase-card:hover .view-link {
     text-decoration: underline;
+  }
+
+  .quick-links {
+    max-width: 1200px;
+    margin: 60px auto 0;
+  }
+
+  .quick-links h3 {
+    font-size: 20px;
+    font-weight: 400;
+    color: #385757;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .quick-link {
+    display: block;
+    padding: 20px 30px;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    text-align: center;
+    text-decoration: none;
+    color: #385757;
+    font-size: 14px;
+    font-weight: 400;
+    transition: all 0.3s;
+  }
+
+  .quick-link:hover {
+    background: #385757;
+    color: #ffffff;
+    border-color: #385757;
   }
 
   .back-link {

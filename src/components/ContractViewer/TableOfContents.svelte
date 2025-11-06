@@ -1,6 +1,7 @@
 <script>
-  import { FileText } from 'lucide-svelte';
-  
+  import { navigate } from 'svelte-routing';
+  import { FileText, ChevronLeft } from 'lucide-svelte';
+
   export let contractData;
   export let selectedClauseId = null;
   export let onSelect = () => {};
@@ -31,10 +32,17 @@
   function isSelected(id, type) {
     return selectedClauseId === `${type}-${id}`;
   }
+
+  function handleNavigateToDrafting() {
+    navigate('/');
+  }
 </script>
 
 <div class="toc-container">
   <div class="toc-header">
+    <button class="chevron-back" on:click={handleNavigateToDrafting} title="Back to Drafting Manager">
+      <ChevronLeft size={24} strokeWidth={2} />
+    </button>
     <div class="icon-container">
       <FileText size={32} strokeWidth={1.5} />
     </div>
@@ -131,11 +139,30 @@
   }
 
   .toc-header {
-    padding: 60px 30px 40px;
+    padding: 14px 30px 14px 30px;
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .chevron-back {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .chevron-back:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
   }
 
   .icon-container {

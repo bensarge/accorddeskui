@@ -7,7 +7,7 @@
   let selectedClauseId = null;
   let contractWordingElement;
   let tocElement;
-  let headerCollapsed = false;
+  let headerCollapsed = true;
 
   function handleTOCSelect(clauseId) {
     selectedClauseId = clauseId;
@@ -30,8 +30,7 @@
           const targetScrollTop = contractWordingElement.scrollTop +
                                   elementRect.top -
                                   containerRect.top -
-                                  headerHeight -
-                                  10; // 10px additional offset for visual spacing
+                                  headerHeight; 
 
           // Perform smooth scroll
           contractWordingElement.scrollTo({
@@ -66,7 +65,10 @@
     <!-- Contract Header: Collapsible with Condensed Summary Row -->
     <div class="contract-header" class:collapsed={headerCollapsed}>
       <div class="header-title-bar">
-        <h3>{contractData.metadata.title}</h3>
+        <div class="header-title-left">
+          <img src="/accorddesk_logo_alpha.png" alt="AccordDesk Logo" class="header-logo" />
+          <h3>{contractData.metadata.title}</h3>
+        </div>
         <div class="header-title-meta">
           <span class="status-badge {contractData.metadata.status.toLowerCase()}">{contractData.metadata.status}</span>
           <button class="header-toggle-btn" on:click={() => headerCollapsed = !headerCollapsed}>
@@ -178,8 +180,9 @@
   /* Contract Header: Collapsible with Condensed Summary Row */
   .contract-header {
     background-color: #ffffff;
-    border: 1px solid #e5e5e5;
-    border-bottom: 2px solid #e5e5e5;
+    /* border: 1px solid #e5e5e5; */
+    /* border-bottom: 2px solid #e5e5e5; */
+    padding: 0px 45px 0px 40px;
     transition: all 0.3s ease;
     position: relative;
     z-index: 25;
@@ -189,12 +192,24 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 30px;
+    padding: 5px 25px 5px 0px;
     border-bottom: 2px solid #385757;
   }
 
+  .header-title-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .header-logo {
+    height: 77px;
+    width: auto;
+    flex-shrink: 0;
+  }
+
   .header-title-bar h3 {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 400;
     color: #385757;
     margin: 0;
@@ -225,7 +240,7 @@
   }
 
   .header-summary {
-    padding: 16px 30px;
+    padding: 16px 0px 30px 10px;
     background: #fafafa;
     border-bottom: 1px solid #e5e5e5;
     display: flex;

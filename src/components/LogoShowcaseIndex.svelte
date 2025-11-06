@@ -146,11 +146,14 @@
   <div class="quick-links">
     <h3>Quick Navigation</h3>
     <div class="links-grid">
-      <Link to="/" class="quick-link">
-        ← Back to Main App
+      <Link to="/showcase" class="quick-link">
+        ← All Showcases
       </Link>
-      <Link to="/showcase/add-template-buttons" class="quick-link">
-        Button Showcase
+      <Link to="/" class="quick-link">
+        Main App
+      </Link>
+      <Link to="/showcase/contract-header" class="quick-link">
+        Contract Headers
       </Link>
     </div>
   </div>
